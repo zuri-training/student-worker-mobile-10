@@ -1,9 +1,8 @@
 # Project Documentation
-
-    Studing while you earn is about bridging the gap between the students looking for part-time jobs and companies looking for people to work for them for a period of time.
+Studing while you earn is about bridging the gap between the students looking for part-time jobs and companies looking for people to work for them for a period of time.
+https://docs.google.com/document/d/1-3gUOcrdKTYW_2s6uXsOfPjAzWTqjQw3zZtZlcBAo4k/edit?usp=sharing
 
     # How to contribute
-
    1. Fork the repository
    2. Clone and then open it up on your code editor
    3. Open terminal and set upsream branch: git remote add upstream https://github.com/zuri-training/student-worker-mobile-pjt-10.git
