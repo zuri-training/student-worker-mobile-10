@@ -76,6 +76,37 @@ class _JobMainstate extends State<JobMain> {
       ),
     );
   }
+  
+  Widget buildJobCategory() {
+    return Container(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: <Widget> [
+            jobCategory(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget jobCategory() {
+    return SizedBox(
+      width: 50,
+      height: 50,
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children:<Widget> [
+            CircleAvatar(),
+            Text(''),
+          ],
+        ),             
+      ),
+    );
+  }
+
 
 
   @override
@@ -109,8 +140,10 @@ class _JobMainstate extends State<JobMain> {
                       buildJob(),
                       //SizedBox(height: 1.0),
                       buildSearch(),
-                      SizedBox(height: 50),
+                      SizedBox(height: 30),
                       buildExplore(),
+                      SizedBox(height:10),
+                      buildJobCategory(),
                     ],
                   ),
                 ),
