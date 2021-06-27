@@ -95,6 +95,7 @@ class _ResumePage2State extends State<ResumePage2> {
 
                       Expanded(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('End Year',
                                 style: GoogleFonts.roboto(
@@ -131,13 +132,16 @@ SizedBox(height: 74,),
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontSize: 18,
-                                color: Color(0xffFFFFFF),
-                              )),
+                                fontSize: 16,
+                                color: Color(0xff0A674F),
+                              ),),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Color(0xffE5E5E5)),
                         ),
 
                       ),
-                      SizedBox(width: 50,),
+                      SizedBox(width: 127,),
 
                       ElevatedButton(
                         onPressed: () {

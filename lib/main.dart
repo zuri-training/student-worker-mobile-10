@@ -17,7 +17,7 @@ class App extends StatelessWidget {
           '/' : (context) => Loading(),
           '/Welcome': (context) => WelcomeScreen(),
           // '/Home': (context) => Home(),
-          // '/location' : (context) => ChangeLocation(),
+
         }
     );
   }

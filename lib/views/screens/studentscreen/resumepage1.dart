@@ -148,6 +148,7 @@ class _ResumePageState extends State<ResumePage> {
 
                       Expanded(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('City',
                                 style: GoogleFonts.roboto(
