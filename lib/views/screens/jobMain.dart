@@ -61,7 +61,6 @@ class _JobMainstate extends State<JobMain> {
     );
   }
 
-
   Widget buildExplore() {
     return Container(
       alignment: Alignment.centerLeft,
@@ -76,7 +75,7 @@ class _JobMainstate extends State<JobMain> {
       ),
     );
   }
-  
+
   Widget buildJobCategory() {
     return Container(
       child: Align(
@@ -85,7 +84,10 @@ class _JobMainstate extends State<JobMain> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: <Widget> [
-              jobCategory(),
+              jobCategory('Retail'),
+              jobCategory('Marketing'),
+              jobCategory('Catering'),
+              jobCategory('Careers'),
             ],
           ),
         ),
@@ -93,7 +95,7 @@ class _JobMainstate extends State<JobMain> {
     );
   }
 
-  Widget jobCategory() {
+  Widget jobCategory(String category) {
     return SizedBox(
       width: 100,
       height: 100,
@@ -103,15 +105,13 @@ class _JobMainstate extends State<JobMain> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children:<Widget> [
             CircleAvatar(),
-            Text(''),
+            Text(category),
           ],
         ),             
       ),
     );
   }
-
-
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,6 +120,7 @@ class _JobMainstate extends State<JobMain> {
         child: GestureDetector(
           child: Stack(
             children: <Widget>[
+
               Container(
                 //height: double.infinity,
                 //width: double.infinity,
@@ -145,7 +146,7 @@ class _JobMainstate extends State<JobMain> {
                       buildSearch(),
                       SizedBox(height: 30),
                       buildExplore(),
-                      SizedBox(height:10),
+                      SizedBox(height: 10),
                       buildJobCategory(),
                     ],
                   ),
