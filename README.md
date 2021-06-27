@@ -1,16 +1,16 @@
-# Project Documentation
-Studing while you earn is about bridging the gap between the students looking for part-time jobs and companies looking for people to work for them for a period of time.
-https://docs.google.com/document/d/1-3gUOcrdKTYW_2s6uXsOfPjAzWTqjQw3zZtZlcBAo4k/edit?usp=sharing
+# studentworker
 
-    # How to contribute
-   1. Fork the repository
-   2. Clone and then open it up on your code editor
-   3. Open terminal and set upsream branch: git remote add upstream https://github.com/zuri-training/student-worker-mobile-pjt-10.git
-   4. Pull upstream git pull upstream develop
-   5. Create a new branch for the task your are doing 
-   6. After making changes, do git add .
-   7. Commit your changes with a descriptive commit messagegit commit -m "commit message"
-   8. To make sure there are no conflicts: git pull upstream develop
-   9. Push changes to your new branch: git push origin your-current-branch-name
-   10. Create a pull request to the develop branch
-# student-worker-mobile-pjt-10
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
