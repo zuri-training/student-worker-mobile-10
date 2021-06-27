@@ -79,12 +79,15 @@ class _JobMainstate extends State<JobMain> {
   
   Widget buildJobCategory() {
     return Container(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: <Widget> [
-            jobCategory(),
-          ],
+      child: Align(
+        alignment: Alignment.centerLeft,
+              child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: <Widget> [
+              jobCategory(),
+            ],
+          ),
         ),
       ),
     );
@@ -92,8 +95,8 @@ class _JobMainstate extends State<JobMain> {
 
   Widget jobCategory() {
     return SizedBox(
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 100,
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.min,
