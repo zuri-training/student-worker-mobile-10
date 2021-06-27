@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studentworker/views/screens/getstarted.dart';
-import 'package:studentworker/views/screens/homescreen.dart';
+// import 'package:studentworker/views/screens/homescreen.dart';
 import 'package:studentworker/views/screens/loadingscreen.dart';
 
 
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
         routes: {
           '/' : (context) => Loading(),
           '/Welcome': (context) => WelcomeScreen(),
-          '/Home': (context) => Home(),
+          // '/Home': (context) => Home(),
           // '/location' : (context) => ChangeLocation(),
         }
     );

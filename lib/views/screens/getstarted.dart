@@ -1,8 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:studentworker/views/screens/studentscreen/resumepage1.dart';
 
-import 'homescreen.dart';
+
+
+//import 'homescreen.dart';
 
 class WelcomeScreen extends StatefulWidget {
 
@@ -31,8 +34,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     },
 
   ];
-
-
   AnimatedContainer _buildDots({required int index}) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
@@ -52,7 +53,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Color(0xE5E5E5),
+      backgroundColor: Color(0xffE5E5E5),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -64,21 +65,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: <Widget>[
+
+                      Spacer(flex: 2),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
                         child: Text(
                           splashData[index]['title']!.toUpperCase(),
                           textAlign: TextAlign.center,
                           style: GoogleFonts.roboto(
-                              textStyle: TextStyle(fontWeight: FontWeight.w500,
-                                fontSize: 20, letterSpacing: 2,
-                                color: Color(0x1F135B),
-                              ) ),
+                                              textStyle: TextStyle(fontWeight: FontWeight.w500,
+                                                fontSize: 20,
+                                                color: const Color(0xff1F135B),
+                                              ) ),
                         ),
                       ),
 
                       Spacer(
-                        flex: 1,
+                        flex: 2,
                       ),
                       AspectRatio(
                         aspectRatio: 16 / 9,
@@ -87,15 +90,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           fit: BoxFit.contain,
                         ),
                       ),
-                      Spacer(),
+                      Spacer(flex: 1,),
+
                       Text(
                         splashData[index]['subtitle']!,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.roboto(
-                            textStyle: TextStyle(fontWeight: FontWeight.w400,
-                              fontSize: 16, letterSpacing: 2,
-                              color: Color(0x000000),
-                            ) ),
+                                  textStyle: TextStyle(fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    color: const Color(0xff000000),
+                                  ) ),
                       ),
                     ],
                   );
@@ -131,23 +135,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeIn,
                           );
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) => Home()));
-                        },
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => ResumePage()));
+                                      },
+
                         child: Text(
                           _currentPage + 1 == splashData.length
                               ? 'Get Started'
                               : 'Get Started',
-                          style: GoogleFonts.roboto(
-                              textStyle: TextStyle(fontWeight: FontWeight.w400,
-                                fontSize: 16, letterSpacing: 2,
-                                color: Color(0xFFFFFF),
-                              ) ),
+                          style:GoogleFonts.roboto(
+                                              textStyle: TextStyle(fontWeight: FontWeight.w400,
+                                                fontSize: 16,
+                                                color: Color(0xffFFFFFF),
+                                              ) ),
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        color: const Color(0x0A674F),
+                        color: const Color(0xFF0A674F),
                       ),
                     ),
                   ),
@@ -161,3 +162,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 }
+
+
+
+

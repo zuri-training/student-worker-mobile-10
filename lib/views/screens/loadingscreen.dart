@@ -27,7 +27,7 @@ void initState() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Color(0xE5E5E5),
+      backgroundColor: Color(0xffE5E5E5),
       body: Center(
 child: Text(
 "StudentWorker", style: GoogleFonts.roboto(
