@@ -84,6 +84,7 @@ class JobWidget extends StatelessWidget {
               child: Text(
                 'View Details',
                 style: TextStyle(
+                  color: Colors.black45,
                     decoration: TextDecoration.underline, fontSize: 12),
               ),
             ),
