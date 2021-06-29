@@ -121,7 +121,9 @@ class _JobMainstate extends State<JobMain> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              CircleAvatar(),
+              CircleAvatar(
+              backgroundColor: Colors.grey,
+              ),
               Text(category),
             ],
           ),
