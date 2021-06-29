@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studentworker/views/screens/studentscreen/resumepage1.dart';
+
+import 'homescreen.dart';
 
 
 
@@ -135,7 +136,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeIn,
                           );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => ResumePage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) =>Home()));
                                       },
 
                         child: Text(

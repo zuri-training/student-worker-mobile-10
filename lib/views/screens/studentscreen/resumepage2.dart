@@ -120,44 +120,49 @@ SizedBox(height: 74,),
 
                   Row(
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ResumePage()));
-                        },
-                        child: Text(
-                          "Previous",
-                          style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                color: Color(0xff0A674F),
-                              ),),
+                      Expanded(
+                        flex: 3,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ResumePage()));
+                          },
+                          child: Text(
+                            "Previous",
+                            style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  color: Color(0xff0A674F),
+                                ),),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xffE5E5E5)),
+                          ),
                         ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Color(0xffE5E5E5)),
-                        ),
-
                       ),
-                      SizedBox(width: 127,),
+                      Spacer(flex : 2),
 
-                      ElevatedButton(
-                        onPressed: () {
+                      Expanded(
+                        flex : 3,
+                        child: ElevatedButton(
+                          onPressed: () {
 
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => ResumePage3()));
-                        },
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ResumePage3()));
+                          },
 
-                        child: Text("Next",
-                          style:GoogleFonts.roboto(
-                              textStyle: TextStyle(fontWeight: FontWeight.w400,
-                                fontSize: 18, letterSpacing: 2,
-                                color: Color(0xffFFFFFF),
-                              ) ),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF0A674F)),
+                          child: Text("Next",
+                            style:GoogleFonts.roboto(
+                                textStyle: TextStyle(fontWeight: FontWeight.w400,
+                                  fontSize: 18, letterSpacing: 2,
+                                  color: Color(0xffFFFFFF),
+                                ) ),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF0A674F)),
+                          ),
                         ),
                       ),
                     ],

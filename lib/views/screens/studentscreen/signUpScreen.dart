@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
-import 'jobpage/job.dart';
+import 'package:studentworker/views/screens/studentscreen/resumepage1.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -17,7 +15,6 @@ class _LoginScreenstate extends State<LoginScreen> {
   bool isRememberMe = false;
 
   Widget buildOr() {
-
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.all(8.00),
@@ -49,7 +46,7 @@ class _LoginScreenstate extends State<LoginScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            //color: Colors.white,
+           // color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             // boxShadow: [
             //   BoxShadow(
@@ -58,7 +55,6 @@ class _LoginScreenstate extends State<LoginScreen> {
             //     offset: Offset(0, 2),
             //   ),
             // ],
-
           ),
           height: 60,
           child: TextField(
@@ -67,11 +63,11 @@ class _LoginScreenstate extends State<LoginScreen> {
               color: Colors.black87,
             ),
             decoration: InputDecoration(
+              //border: InputBorder.none,
               focusedBorder:OutlineInputBorder(
                   borderSide: const BorderSide(color: Color(0xff757575), width: 2.0)),
               border: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(0xff757575), width: 5.0)),
-             // border: InputBorder.none,
               contentPadding: EdgeInsets.all(8.00),
               hintText: 'danielsilver12@gmail.com',
               hintStyle: TextStyle(
@@ -101,15 +97,15 @@ class _LoginScreenstate extends State<LoginScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-           // color: Colors.white,
+            //color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-           // boxShadow: [
-           //    BoxShadow(
-           //      color: Colors.black26,
-           //      blurRadius: 6,
-           //      offset: Offset(0, 2),
-           //    ),
-           //  ],
+            // boxShadow: [
+            //   BoxShadow(
+            //     color: Colors.black26,
+            //     blurRadius: 6,
+            //     offset: Offset(0, 2),
+            //   ),
+            // ],
           ),
           height: 60,
           child: TextField(
@@ -118,11 +114,11 @@ class _LoginScreenstate extends State<LoginScreen> {
               color: Colors.black87,
             ),
             decoration: InputDecoration(
+             // border: InputBorder.none,
               focusedBorder:OutlineInputBorder(
                   borderSide: const BorderSide(color: Color(0xff757575), width: 2.0)),
               border: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(0xff757575), width: 5.0)),
-              // border: InputBorder.none,
               contentPadding: EdgeInsets.all(8.00),
               suffixIcon: InkWell(
                 onTap: _togglePasswordView,
@@ -155,7 +151,7 @@ class _LoginScreenstate extends State<LoginScreen> {
     );
   }
 
-  Widget buildForgotPassBtn() {
+  /*Widget buildForgotPassBtn() {
     return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
@@ -168,7 +164,7 @@ class _LoginScreenstate extends State<LoginScreen> {
             ),
           )),
     );
-  }
+  }*/
 
   Widget buildRemMeCb() {
     return Container(
@@ -190,7 +186,7 @@ class _LoginScreenstate extends State<LoginScreen> {
             ),
           ),
           Text(
-              'Remember me',
+            'Remember me',
               style:GoogleFonts.roboto(
                   textStyle: TextStyle(fontWeight: FontWeight.w400,
                     fontSize: 16,
@@ -202,20 +198,20 @@ class _LoginScreenstate extends State<LoginScreen> {
     );
   }
 
-  // Widget buildTermsAndCondition() {
-  //   return Container(
-  //     alignment: Alignment.centerLeft,
-  //     padding: EdgeInsets.only(top: 40.00),
-  //     child: Text(
-  //         'By Signing Up You Agree To Our Terms And Conditions',
-  //         style:GoogleFonts.roboto(
-  //             textStyle: TextStyle(fontWeight: FontWeight.w400,
-  //               fontSize: 16,
-  //               color: Color(0xff000000),
-  //             ) )
-  //     ),
-  //   );
-  // }
+  Widget buildTermsAndCondition() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      padding: EdgeInsets.only(top: 40.00),
+      child: Text(
+        'By Signing Up You Agree To Our Terms And Conditions',
+          style:GoogleFonts.roboto(
+              textStyle: TextStyle(fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Color(0xff000000),
+              ) )
+      ),
+    );
+  }
 
   Widget buildSignUpButton() {
     return Container(
@@ -234,10 +230,10 @@ class _LoginScreenstate extends State<LoginScreen> {
 
         onPressed: () {
 
-          Navigator.push(context,MaterialPageRoute(builder: (context) => JobPage()));
+          Navigator.push(context,MaterialPageRoute(builder: (context) => ResumePage()));
         },
         child: Text(
-          'Login',
+          'Sign Up',
           style: GoogleFonts.roboto(
             textStyle: TextStyle(
               fontWeight: FontWeight.w400,
@@ -251,15 +247,15 @@ class _LoginScreenstate extends State<LoginScreen> {
 
   Widget buildLogInBtn() {
     return GestureDetector(
-      onTap: ()  {
+      onTap: () =>  {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => LoginScreen()));
+            MaterialPageRoute(builder: (context) => LoginScreen()))
       },
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
-                text: "Don't Have An Account?",
+              text: 'Already Have An Account? ',
                 style:GoogleFonts.roboto(
                     textStyle: TextStyle(fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -267,7 +263,7 @@ class _LoginScreenstate extends State<LoginScreen> {
                     ) )
             ),
             TextSpan(
-                text: 'Sign Up',
+                text: 'Login',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
@@ -301,7 +297,7 @@ class _LoginScreenstate extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                          'Student Login',
+                        'Student Sign Up',
                           style:GoogleFonts.roboto(
                               textStyle: TextStyle(fontWeight: FontWeight.w400,
                                 fontSize: 20,
@@ -316,7 +312,7 @@ class _LoginScreenstate extends State<LoginScreen> {
                       buildPassword(),
                       buildPasswordMin(),
                       buildRemMeCb(),
-                      //buildTermsAndCondition(),
+                      buildTermsAndCondition(),
                       buildSignUpButton(),
                       buildLogInBtn(),
                     ],
