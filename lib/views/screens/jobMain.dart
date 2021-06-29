@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'job.dart';
+
 class JobMain extends StatefulWidget {
   @override
   _JobMainstate createState() {
@@ -9,6 +11,18 @@ class JobMain extends StatefulWidget {
 }
 
 class _JobMainstate extends State<JobMain> {
+  bool showMore = false;
+
+  int currentNavIndex = 0;
+
+  Widget buildAppName() {
+    return Text(
+      'StudentWorker',
+      style: TextStyle(
+          fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+    );
+  }
+
   Widget buildJob() {
     return Container(
       alignment: Alignment.center,
@@ -64,7 +78,7 @@ class _JobMainstate extends State<JobMain> {
   Widget buildExplore() {
     return Container(
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.all(8.00),
+      // padding: EdgeInsets.all(8.00),
       child: Text(
         'Explore our categories',
         style: TextStyle(
@@ -80,10 +94,10 @@ class _JobMainstate extends State<JobMain> {
     return Container(
       child: Align(
         alignment: Alignment.centerLeft,
-              child: SingleChildScrollView(
+        child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: <Widget> [
+            children: <Widget>[
               jobCategory('Retail'),
               jobCategory('Marketing'),
               jobCategory('Catering'),
@@ -100,58 +114,98 @@ class _JobMainstate extends State<JobMain> {
       width: 100,
       height: 100,
       child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children:<Widget> [
-            CircleAvatar(),
-            Text(category),
-          ],
-        ),             
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          child: Column(
+            // mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(),
+              Text(category),
+            ],
+          ),
+        ),
       ),
     );
   }
-  
+
+  Widget buildJobList() {
+    List<JobModel> jobs =
+        List<JobModel>.generate(showMore ? 10 : 3, (index) => JobModel());
+    return ListView.builder(
+      physics: ClampingScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: jobs.length,
+      itemBuilder: (_, i) => JobWidget(jobs[i]),
+    );
+  }
+
+  void onNavItemTap(int i) {
+    // Add a switch case statement here to perfom
+    // some action for a perticular item
+    setState(() {
+      currentNavIndex = i;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          child: Stack(
+      appBar: AppBar(
+        toolbarHeight: 160,
+        centerTitle: true,
+        title: Column(children: [
+          buildAppName(),
+          SizedBox(height: 10),
+          buildJob(),
+          buildSearch(),
+        ]),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        onTap: onNavItemTap,
+        currentIndex: currentNavIndex,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.work_outline), label: 'Jobs'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_outlined), label: 'Applications'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.file_copy_outlined), label: 'Resume'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_pin), label: 'Profile'),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          // padding: EdgeInsets.symmetric(
+          //   horizontal: 25,
+          //   vertical: 120,
+          // ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-
-              Container(
-                //height: double.infinity,
-                //width: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 25,
-                    vertical: 120,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'StudentWorker',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      buildJob(),
-                      //SizedBox(height: 1.0),
-                      buildSearch(),
-                      SizedBox(height: 30),
-                      buildExplore(),
-                      SizedBox(height: 10),
-                      buildJobCategory(),
-                    ],
-                  ),
+              SizedBox(height: 30),
+              buildExplore(),
+              SizedBox(height: 10),
+              buildJobCategory(),
+              SizedBox(),
+              buildJobList(),
+              TextButton(
+                child: Text(
+                  !showMore ? 'See more' : 'See less',
+                  style: TextStyle(decoration: TextDecoration.underline),
                 ),
-              ),
+                onPressed: () {
+                  setState(() {
+                    showMore = !showMore;
+                  });
+                },
+              )
             ],
           ),
         ),
