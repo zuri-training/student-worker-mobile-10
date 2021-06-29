@@ -155,6 +155,7 @@ class _JobMainstate extends State<JobMain> {
       appBar: AppBar(
         toolbarHeight: 160,
         centerTitle: true,
+        backgroundColor: Colors.grey,
         title: Column(children: [
           buildAppName(),
           SizedBox(height: 10),
