@@ -64,10 +64,12 @@ class _JobMainstate extends State<JobMain> {
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.all(10),
-              suffixIcon: Icon(
-                Icons.search,
-                color: Colors.black45,
-              ),
+                suffixIcon: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black45,
+                ),
+                onPressed: () {},
+                child: Icon(Icons.search, color: Colors.white)),
               hintText: 'Title/Keyword/Category',
               hintStyle: TextStyle(
                 color: Colors.black38,
@@ -126,11 +128,26 @@ class _JobMainstate extends State<JobMain> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               CircleAvatar(
-              backgroundColor: Colors.grey,
+                backgroundColor: Colors.grey,
               ),
               Text(category),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildRecentJob() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      // padding: EdgeInsets.all(8.00),
+      child: Text(
+        'Recent jobs',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 15,
+          //fontWeight: FontWeight.bold,
         ),
       ),
     );
@@ -200,6 +217,8 @@ class _JobMainstate extends State<JobMain> {
               buildExplore(),
               SizedBox(height: 10),
               buildJobCategory(),
+              SizedBox(height: 15),
+              buildRecentJob(),
               SizedBox(),
               buildJobList(),
               TextButton(
