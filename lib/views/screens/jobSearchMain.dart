@@ -29,8 +29,7 @@ class _JobSearchMainstate extends State<JobSearchMain> {
       ),
     );
   }
-
-  Widget buildSearch() {
+Widget buildSearch() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -43,6 +42,9 @@ class _JobSearchMainstate extends State<JobSearchMain> {
             border: OutlineInputBorder(),
             contentPadding: EdgeInsets.all(10),
             suffixIcon: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black45,
+                ),
                 onPressed: () {},
                 child: Icon(Icons.search, color: Colors.white)),
             hintText: 'Writer',
@@ -55,6 +57,7 @@ class _JobSearchMainstate extends State<JobSearchMain> {
     );
   }
 
+  
   Widget buildTotalJobCount() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
