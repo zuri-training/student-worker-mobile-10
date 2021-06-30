@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'search.dart';
+import 'job.dart';
 
 class JobSearchMain extends StatefulWidget {
   @override
@@ -34,36 +34,20 @@ class _JobSearchMainstate extends State<JobSearchMain> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Container(
-          alignment: Alignment.topLeft,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(2),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 6,
-                offset: Offset(0, 2),
-              ),
-            ],
+        TextFormField(
+          keyboardType: TextInputType.text,
+          style: TextStyle(
+            color: Colors.black87,
           ),
-          height: 30,
-          child: TextField(
-            keyboardType: TextInputType.text,
-            style: TextStyle(
-              color: Colors.black87,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.all(10),
-              suffixIcon: Icon(
-                Icons.search,
-                color: Colors.black45,
-              ),
-              hintText: 'Writer',
-              hintStyle: TextStyle(
-                color: Colors.black38,
-              ),
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            contentPadding: EdgeInsets.all(10),
+            suffixIcon: ElevatedButton(
+                onPressed: () {},
+                child: Icon(Icons.search, color: Colors.white)),
+            hintText: 'Writer',
+            hintStyle: TextStyle(
+              color: Colors.black38,
             ),
           ),
         ),
@@ -71,18 +55,38 @@ class _JobSearchMainstate extends State<JobSearchMain> {
     );
   }
 
-  Widget buildJobs() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      //padding: EdgeInsets.all(8.00),
-      child: Text(
-        '12,000 Jobs',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
+  Widget buildTotalJobCount() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          '12,000 Jobs',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-      ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton.icon(
+              onPressed: () {},
+              icon: Icon(
+                Icons.filter_alt_outlined,
+                color: Colors.black54,
+                ),
+              label: Text(
+                'Filter',
+                style: TextStyle(
+                  color: Colors.black54,
+                  ),
+                
+                ),
+            )
+          ],
+        )
+      ],
     );
   }
 
@@ -105,6 +109,8 @@ class _JobSearchMainstate extends State<JobSearchMain> {
     });
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,49 +129,23 @@ class _JobSearchMainstate extends State<JobSearchMain> {
               icon: Icon(Icons.person_pin), label: 'Profile'),
         ],
       ),
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 25,
-                    vertical: 120,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      buildTkc(),
-                      buildSearch(),
-                      SizedBox(height: 40),
-                      buildJobs(),
-                      //SizedBox(height: 20),
-                      buildJobList(),
-
-                     /* TextButton(
-                        child: Text(
-                          !showMore ? '<>',
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            showMore = !showMore;
-                          });
-                        },
-                      )*/
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+      body: SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        padding: EdgeInsets.symmetric(
+          horizontal: 25,
+          vertical: 120,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            buildTkc(),
+            buildSearch(),
+            SizedBox(height: 40),
+            buildTotalJobCount(),
+            //SizedBox(height: 20),
+            buildJobList(),
+          ],
         ),
       ),
     );
