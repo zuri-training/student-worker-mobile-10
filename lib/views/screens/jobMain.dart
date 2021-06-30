@@ -64,10 +64,12 @@ class _JobMainstate extends State<JobMain> {
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.all(10),
-              suffixIcon: Icon(
-                Icons.search,
-                color: Colors.black45,
-              ),
+              suffixIcon: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black45,
+                ),
+                onPressed: () {},
+                child: Icon(Icons.search, color: Colors.white)),
               hintText: 'Title/Keyword/Category',
               hintStyle: TextStyle(
                 color: Colors.black38,
