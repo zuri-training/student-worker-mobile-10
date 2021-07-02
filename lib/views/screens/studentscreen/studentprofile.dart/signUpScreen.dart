@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:studentworker/views/screens/studentscreen/studentprofile.dart/resumepage1.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -33,25 +35,26 @@ class _LoginScreenstate extends State<LoginScreen> {
       children: <Widget>[
         Text(
           'Email',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+              color: Color(0xff000000),
+            ),),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 3),
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: Colors.white,
+           // color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 6,
-                offset: Offset(0, 2),
-              ),
-            ],
+            // boxShadow: [
+            //   BoxShadow(
+            //     color: Colors.black26,
+            //     blurRadius: 6,
+            //     offset: Offset(0, 2),
+            //   ),
+            // ],
           ),
           height: 60,
           child: TextField(
@@ -60,9 +63,13 @@ class _LoginScreenstate extends State<LoginScreen> {
               color: Colors.black87,
             ),
             decoration: InputDecoration(
-              border: InputBorder.none,
+              //border: InputBorder.none,
+              focusedBorder:OutlineInputBorder(
+                  borderSide: const BorderSide(color: Color(0xff757575), width: 2.0)),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xff757575), width: 5.0)),
               contentPadding: EdgeInsets.all(8.00),
-              hintText: 'ayodavid123@gmail.com',
+              hintText: 'danielsilver12@gmail.com',
               hintStyle: TextStyle(
                 color: Colors.black38,
               ),
@@ -79,25 +86,26 @@ class _LoginScreenstate extends State<LoginScreen> {
       children: <Widget>[
         Text(
           'Password',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+              color: Color(0xff000000),
+            ),),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 3),
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            color: Colors.white,
+            //color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 6,
-                offset: Offset(0, 2),
-              ),
-            ],
+            // boxShadow: [
+            //   BoxShadow(
+            //     color: Colors.black26,
+            //     blurRadius: 6,
+            //     offset: Offset(0, 2),
+            //   ),
+            // ],
           ),
           height: 60,
           child: TextField(
@@ -106,7 +114,11 @@ class _LoginScreenstate extends State<LoginScreen> {
               color: Colors.black87,
             ),
             decoration: InputDecoration(
-              border: InputBorder.none,
+             // border: InputBorder.none,
+              focusedBorder:OutlineInputBorder(
+                  borderSide: const BorderSide(color: Color(0xff757575), width: 2.0)),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xff757575), width: 5.0)),
               contentPadding: EdgeInsets.all(8.00),
               suffixIcon: InkWell(
                 onTap: _togglePasswordView,
@@ -175,10 +187,11 @@ class _LoginScreenstate extends State<LoginScreen> {
           ),
           Text(
             'Remember me',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+              style:GoogleFonts.roboto(
+                  textStyle: TextStyle(fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    color: Color(0xff000000),
+                  ) )
           )
         ],
       ),
@@ -191,11 +204,11 @@ class _LoginScreenstate extends State<LoginScreen> {
       padding: EdgeInsets.only(top: 40.00),
       child: Text(
         'By Signing Up You Agree To Our Terms And Conditions',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
+          style:GoogleFonts.roboto(
+              textStyle: TextStyle(fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Color(0xff000000),
+              ) )
       ),
     );
   }
@@ -205,18 +218,28 @@ class _LoginScreenstate extends State<LoginScreen> {
       padding: EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: Colors.black,
-          elevation: 8,
+        // style: ElevatedButton.styleFrom(
+        //   primary: Colors.black,
+        //   elevation: 8,
+        // ),
+
+        style: ButtonStyle(
+          backgroundColor:
+          MaterialStateProperty.all<Color>(Color(0xFF0A674F)),
         ),
-        onPressed: () => print("Login Pressed"),
+
+        onPressed: () {
+
+          Navigator.push(context,MaterialPageRoute(builder: (context) => ResumePage()));
+        },
         child: Text(
           'Sign Up',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+              color: Color(0xffF8F8F8),
+            ),),
         ),
       ),
     );
@@ -224,17 +247,20 @@ class _LoginScreenstate extends State<LoginScreen> {
 
   Widget buildLogInBtn() {
     return GestureDetector(
-      onTap: () => print("Sign Up Pressed"),
+      onTap: () =>  {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => LoginScreen()))
+      },
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
               text: 'Already Have An Account? ',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
+                style:GoogleFonts.roboto(
+                    textStyle: TextStyle(fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xff000000),
+                    ) )
             ),
             TextSpan(
                 text: 'Login',
@@ -252,6 +278,7 @@ class _LoginScreenstate extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffE5E5E5),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
@@ -271,10 +298,11 @@ class _LoginScreenstate extends State<LoginScreen> {
                     children: <Widget>[
                       Text(
                         'Student Sign Up',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                          style:GoogleFonts.roboto(
+                              textStyle: TextStyle(fontWeight: FontWeight.w400,
+                                fontSize: 20,
+                                color: Color(0xff1F135B),
+                              ) )
                       ),
                       SizedBox(height: 50),
                       buildOr(),

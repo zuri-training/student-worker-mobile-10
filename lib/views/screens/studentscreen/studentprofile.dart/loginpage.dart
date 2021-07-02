@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studentworker/views/screens/employerscreen/employerlogin.dart';
+import 'package:studentworker/views/screens/job/jobMain.dart';
 
-class EmployerSignupScreen extends StatefulWidget {
+
+class LoginScreen extends StatefulWidget {
   @override
-  _EmployerSignupScreenstate createState() {
-    return _EmployerSignupScreenstate();
+  _LoginScreenstate createState() {
+    return _LoginScreenstate();
   }
 }
 
-class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
+class _LoginScreenstate extends State<LoginScreen> {
   bool isHiddenPassword = true;
   bool isRememberMe = false;
 
   Widget buildOr() {
+
     return Container(
       alignment: Alignment.center,
       padding: EdgeInsets.all(8.00),
@@ -46,7 +48,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-           // color: Colors.white,
+            //color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             // boxShadow: [
             //   BoxShadow(
@@ -55,6 +57,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
             //     offset: Offset(0, 2),
             //   ),
             // ],
+
           ),
           height: 60,
           child: TextField(
@@ -69,7 +72,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
                   borderSide: BorderSide(color: Color(0xff757575), width: 5.0)),
              // border: InputBorder.none,
               contentPadding: EdgeInsets.all(8.00),
-              hintText: 'ayodavid123@gmail.com',
+              hintText: 'danielsilver12@gmail.com',
               hintStyle: TextStyle(
                 color: Colors.black38,
               ),
@@ -97,15 +100,15 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-            //color: Colors.white,
+           // color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-            // boxShadow: [
-            //   BoxShadow(
-            //     color: Colors.black26,
-            //     blurRadius: 6,
-            //     offset: Offset(0, 2),
-            //   ),
-            // ],
+           // boxShadow: [
+           //    BoxShadow(
+           //      color: Colors.black26,
+           //      blurRadius: 6,
+           //      offset: Offset(0, 2),
+           //    ),
+           //  ],
           ),
           height: 60,
           child: TextField(
@@ -118,7 +121,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
                   borderSide: const BorderSide(color: Color(0xff757575), width: 2.0)),
               border: OutlineInputBorder(
                   borderSide: BorderSide(color: Color(0xff757575), width: 5.0)),
-             // border: InputBorder.none,
+              // border: InputBorder.none,
               contentPadding: EdgeInsets.all(8.00),
               suffixIcon: InkWell(
                 onTap: _togglePasswordView,
@@ -151,7 +154,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
     );
   }
 
-  /*Widget buildForgotPassBtn() {
+  Widget buildForgotPassBtn() {
     return Container(
       alignment: Alignment.centerRight,
       child: TextButton(
@@ -164,7 +167,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
             ),
           )),
     );
-  }*/
+  }
 
   Widget buildRemMeCb() {
     return Container(
@@ -198,20 +201,20 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
     );
   }
 
-  Widget buildTermsAndCondition() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      padding: EdgeInsets.only(top: 40.00),
-      child: Text(
-          'By Signing Up You Agree To Our Terms And Conditions',
-          style:GoogleFonts.roboto(
-              textStyle: TextStyle(fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Color(0xff000000),
-              ) )
-      ),
-    );
-  }
+  // Widget buildTermsAndCondition() {
+  //   return Container(
+  //     alignment: Alignment.centerLeft,
+  //     padding: EdgeInsets.only(top: 40.00),
+  //     child: Text(
+  //         'By Signing Up You Agree To Our Terms And Conditions',
+  //         style:GoogleFonts.roboto(
+  //             textStyle: TextStyle(fontWeight: FontWeight.w400,
+  //               fontSize: 16,
+  //               color: Color(0xff000000),
+  //             ) )
+  //     ),
+  //   );
+  // }
 
   Widget buildSignUpButton() {
     return Container(
@@ -221,15 +224,19 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
         // style: ElevatedButton.styleFrom(
         //   primary: Colors.black,
         //   elevation: 8,
-        //
+        // ),
+
         style: ButtonStyle(
           backgroundColor:
           MaterialStateProperty.all<Color>(Color(0xFF0A674F)),
         ),
 
-        onPressed: () => print("Login Pressed"),
+        onPressed: () {
+
+          Navigator.push(context,MaterialPageRoute(builder: (context) => JobMain()));
+        },
         child: Text(
-          'Sign Up',
+          'Login',
           style: GoogleFonts.roboto(
             textStyle: TextStyle(
               fontWeight: FontWeight.w400,
@@ -243,16 +250,15 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
 
   Widget buildLogInBtn() {
     return GestureDetector(
-      onTap: () =>   {
+      onTap: ()  {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => EmployerLoginScreen()))
+            MaterialPageRoute(builder: (context) => LoginScreen()));
       },
-
       child: RichText(
         text: TextSpan(
           children: [
             TextSpan(
-                text: 'Already Have An Account? ',
+                text: "Don't Have An Account?",
                 style:GoogleFonts.roboto(
                     textStyle: TextStyle(fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -260,7 +266,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
                     ) )
             ),
             TextSpan(
-                text: 'Login',
+                text: 'Sign Up',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
@@ -294,7 +300,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Employer Sign Up',
+                          'Student Login',
                           style:GoogleFonts.roboto(
                               textStyle: TextStyle(fontWeight: FontWeight.w400,
                                 fontSize: 20,
@@ -309,7 +315,7 @@ class _EmployerSignupScreenstate extends State<EmployerSignupScreen> {
                       buildPassword(),
                       buildPasswordMin(),
                       buildRemMeCb(),
-                      buildTermsAndCondition(),
+                      //buildTermsAndCondition(),
                       buildSignUpButton(),
                       buildLogInBtn(),
                     ],

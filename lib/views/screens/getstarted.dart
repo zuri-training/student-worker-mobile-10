@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studentworker/views/screens/studentscreen/resumepage1.dart';
+import 'package:studentworker/views/screens/studentscreen/studentprofile.dart/resumepage1.dart';
 
 
 

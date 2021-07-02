@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:studentworker/views/screens/job/jobSearchMain.dart';
 
 import 'job.dart';
 
@@ -18,8 +20,12 @@ class _JobMainstate extends State<JobMain> {
   Widget buildAppName() {
     return Text(
       'StudentWorker',
-      style: TextStyle(
-          fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+      style: GoogleFonts.roboto(
+          textStyle: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 18,
+        color: Color(0xffFFFFFF),
+      )),
     );
   }
 
@@ -29,11 +35,12 @@ class _JobMainstate extends State<JobMain> {
       padding: EdgeInsets.all(8.00),
       child: Text(
         'Find your next job',
-        style: TextStyle(
-          color: Colors.black,
+        style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+          fontWeight: FontWeight.w400,
           fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
+          color: Color(0xffFFFFFF),
+        )),
       ),
     );
   }
@@ -45,34 +52,53 @@ class _JobMainstate extends State<JobMain> {
         Container(
           alignment: Alignment.topLeft,
           decoration: BoxDecoration(
-            color: Colors.white,
+            //color: Color(0xffE5E5E5),
             borderRadius: BorderRadius.circular(2),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 6,
-                offset: Offset(0, 2),
-              ),
-            ],
+            // boxShadow: [
+            //   BoxShadow(
+            //     color: Colors.black26,
+            //     blurRadius: 6,
+            //     offset: Offset(0, 2),
+            //   ),
+            // ],
           ),
           height: 30,
           child: TextField(
             keyboardType: TextInputType.text,
-            style: TextStyle(
-              color: Colors.black87,
-            ),
+            style: GoogleFonts.roboto(
+                textStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 13,
+              color: Color(0xffE5E5E5),
+            )),
             decoration: InputDecoration(
-              border: InputBorder.none,
+              focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                color: Color(0xff0A674F),
+              )),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                color: Color(0xff0A674F),
+              )),
               contentPadding: EdgeInsets.all(10),
               suffixIcon: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.black45,
-                ),
-                onPressed: () {},
-                child: Icon(Icons.search, color: Colors.white)),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xff0A674F),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => JobSearchMain()));
+                  },
+                  child: Icon(Icons.search, color: Color(0xffF8F8F8))),
               hintText: 'Title/Keyword/Category',
-              hintStyle: TextStyle(
-                color: Colors.black38,
+              hintStyle: GoogleFonts.roboto(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13,
+                  color: Color(0xffFFFFFF),
+                ),
               ),
             ),
           ),
@@ -87,11 +113,12 @@ class _JobMainstate extends State<JobMain> {
       // padding: EdgeInsets.all(8.00),
       child: Text(
         'Explore our categories',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          //fontWeight: FontWeight.bold,
-        ),
+        style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+          fontWeight: FontWeight.w700,
+          fontSize: 16,
+          color: Color(0xff1F135B),
+        )),
       ),
     );
   }
@@ -120,6 +147,7 @@ class _JobMainstate extends State<JobMain> {
       width: 100,
       height: 100,
       child: Card(
+        color: Color(0xff341F97),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12.0),
           child: Column(
@@ -128,9 +156,18 @@ class _JobMainstate extends State<JobMain> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               CircleAvatar(
-              backgroundColor: Colors.grey,
+                backgroundColor: Color(0xffE5E5E5),
+                child: Image.asset('assets/retail.png'),
               ),
-              Text(category),
+              Text(
+                category,
+                style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 15,
+                  color: Color(0xffFFFFF9),
+                )),
+              ),
             ],
           ),
         ),
@@ -160,10 +197,14 @@ class _JobMainstate extends State<JobMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffE5E5E5),
       appBar: AppBar(
         toolbarHeight: 160,
         centerTitle: true,
-        backgroundColor: Colors.grey,
+        flexibleSpace: Image(
+          image: AssetImage('assets/Rectangle 27.png'),
+          fit: BoxFit.cover,
+        ),
         title: Column(children: [
           buildAppName(),
           SizedBox(height: 10),
@@ -177,13 +218,61 @@ class _JobMainstate extends State<JobMain> {
         currentIndex: currentNavIndex,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.work_outline), label: 'Jobs'),
+            icon: Icon(
+              Icons.work_outline,
+              color: Color(0xff10AC84),
+            ),
+            label: 'Jobs',
+            // labelStyle: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   letterSpacing: 0.4,
+            //   color: Color(0xff3D3D3D),
+            // )),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outlined), label: 'Applications'),
+            icon: Icon(
+              Icons.person_outlined,
+              color: Color(0xff77E3C7),
+            ),
+            label: 'Applications',
+            // style: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   letterSpacing: 0.4,
+            //   color: Color(0xff000000),
+            // )),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.file_copy_outlined), label: 'Resume'),
+            icon: Icon(
+              Icons.file_copy_outlined,
+              color: Color(0xff77E3C7),
+            ),
+            label: 'Resume',
+            // style: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   letterSpacing: 0.4,
+            //   color: Color(0xff000000),
+            // )),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin), label: 'Profile'),
+            icon: Icon(
+              Icons.person_pin,
+              color: Color(0xff77E3C7),
+            ),
+            label: 'Profile',
+            // style: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   letterSpacing: 0.4,
+            //   color: Color(0xff000000),
+            // )),
+          ),
         ],
       ),
       body: Padding(

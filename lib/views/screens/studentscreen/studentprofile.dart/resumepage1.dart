@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studentworker/views/screens/studentscreen/resumepage2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:studentworker/views/screens/studentscreen/studentprofile.dart/resumepage2.dart';
 
 class ResumePage extends StatefulWidget {
   @override
@@ -9,6 +10,16 @@ class ResumePage extends StatefulWidget {
 }
 
 class _ResumePageState extends State<ResumePage> {
+  late SharedPreferences sp;
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((value) => sp = value);
+  }
+
+  void onChanged(key, value) => sp.setString(key, value);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,7 +46,6 @@ class _ResumePageState extends State<ResumePage> {
                   SizedBox(
                     height: 24.0,
                   ),
-
                   Text(
                     'Personal Details',
                     style: GoogleFonts.roboto(
@@ -61,10 +71,11 @@ class _ResumePageState extends State<ResumePage> {
                     height: 3.0,
                   ),
                   MyTextField(
+                      onChanged: (value) => onChanged("firstname", value),
                       hintText: 'Ayo',
-                      keyboardType: TextInputType.name
-                    ),
-
+                      keyboardType: TextInputType.name, 
+                      //controller: firstnameCtrn,
+                      ),
                   SizedBox(
                     height: 16.0,
                   ),
@@ -81,7 +92,8 @@ class _ResumePageState extends State<ResumePage> {
                     height: 3.0,
                   ),
                   MyTextField(
-                    hintText: 'David',
+                      onChanged: (value) => onChanged("lastname", value),
+                      hintText: 'David',
                       keyboardType: TextInputType.name),
                   SizedBox(
                     height: 16.0,
@@ -102,8 +114,11 @@ class _ResumePageState extends State<ResumePage> {
                     children: [
                       Expanded(
                         child: MyTextField(
-                  hintText: '+234',
-                          keyboardType: TextInputType.number,
+                          onChanged: (value) => onChanged("countryCode", value),
+                          readOnly: true,
+                          hintText: '+234',
+                           keyboardType: TextInputType.number, 
+                          //  controller: ctyCodeCtrn,
                         ),
                       ),
                       SizedBox(
@@ -112,9 +127,9 @@ class _ResumePageState extends State<ResumePage> {
                       Expanded(
                         flex: 3,
                         child: MyTextField(
+                            onChanged: (value) => onChanged("number", value),
                             hintText: '8074000011',
                             keyboardType: TextInputType.number),
-
                       ),
                     ],
                   ),
@@ -134,14 +149,20 @@ class _ResumePageState extends State<ResumePage> {
                                   fontSize: 16,
                                   color: Color(0xff000000),
                                 ))),
-                            SizedBox(height: 3,),
-
+                            SizedBox(
+                              height: 3,
+                            ),
                             MyTextField(
+                                onChanged: (value) =>
+                                    onChanged("currentstate", value),
                                 hintText: 'Lagos',
-                                keyboardType: TextInputType.text),
+                                keyboardType: TextInputType.text,
+                                 //controller: stateCtrn,
+                                 ),
                           ],
                         ),
                       ),
+
                       SizedBox(
                         width: 20.0,
                       ),
@@ -153,25 +174,28 @@ class _ResumePageState extends State<ResumePage> {
                             Text('City',
                                 style: GoogleFonts.roboto(
                                     textStyle: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 16,
-                                      color: Color(0xff000000),
-                                    ))),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  color: Color(0xff000000),
+                                ))),
                             SizedBox(
                               height: 3.0,
                             ),
                             MyTextField(
+                                onChanged: (value) => onChanged("city", value),
                                 hintText: 'Apapa',
-                                keyboardType: TextInputType.text),
+                                keyboardType: TextInputType.text, 
+                                //controller: cityCtrn,
+                                ),
                           ],
                         ),
                       ),
-
                     ],
                   ),
 
-
-                 SizedBox(height: 74,),
+                  SizedBox(
+                    height: 74,
+                  ),
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -187,15 +211,15 @@ class _ResumePageState extends State<ResumePage> {
                           "Next",
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 18,
-                                letterSpacing: 2,
-                                color: Color(0xffFFFFFF),
-                              )),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            letterSpacing: 2,
+                            color: Color(0xffFFFFFF),
+                          )),
                         ),
                         style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFF0A674F)),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xFF0A674F)),
                         ),
                       ),
                     ],
@@ -212,15 +236,27 @@ class _ResumePageState extends State<ResumePage> {
 class MyTextField extends StatelessWidget {
   final String hintText;
   final TextInputType keyboardType;
+  final void Function(String) onChanged;
+  final bool readOnly;
+  //final TextEditingController? controller;
 
-  MyTextField({Key? key, this.hintText = '', this.keyboardType = TextInputType.text}) : super(key: key);
+  MyTextField({
+    Key? key,
+    this.hintText = '',
+    this.keyboardType = TextInputType.text,
+    required this.onChanged,
+    this.readOnly = false,
+  // required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onChanged: onChanged,
+      readOnly: readOnly,
       decoration: InputDecoration(
-          focusedBorder:OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.black38, width: 2.0)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.black38, width: 2.0)),
         border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 5.0)),
         hintText: hintText,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'job.dart';
 
@@ -21,71 +22,74 @@ class _JobSearchMainstate extends State<JobSearchMain> {
       padding: EdgeInsets.all(8.00),
       child: Text(
         'Title/Keyword/Category',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
+        style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 14,
+          color: Color(0xff000000),
+        )),
       ),
     );
   }
-Widget buildSearch() {
+
+  Widget buildSearch() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         TextFormField(
           keyboardType: TextInputType.text,
           style: TextStyle(
-            color: Colors.black87,
+            color: Color(0xff000000),
           ),
           decoration: InputDecoration(
             border: OutlineInputBorder(),
             contentPadding: EdgeInsets.all(10),
             suffixIcon: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black45,
+                  primary: Color(0xff0A674F),
                 ),
                 onPressed: () {},
-                child: Icon(Icons.search, color: Colors.white)),
+                child: Icon(Icons.search, color: Color(0xffF8F8F8))),
             hintText: 'Writer',
-            hintStyle: TextStyle(
-              color: Colors.black38,
-            ),
           ),
         ),
       ],
     );
   }
 
-  
   Widget buildTotalJobCount() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           '12,000 Jobs',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
+          textAlign: TextAlign.start,
+          style: GoogleFonts.roboto(
+              textStyle: TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            color: Color(0xff000000),
+          )),
+        ),
+        SizedBox(
+          width: 50,
         ),
         Row(
-          mainAxisSize: MainAxisSize.min,
           children: [
             TextButton.icon(
               onPressed: () {},
               icon: Icon(
                 Icons.filter_alt_outlined,
-                color: Colors.black54,
-                ),
+                color: Color(0xff1F135B),
+              ),
               label: Text(
                 'Filter',
-                style: TextStyle(
-                  color: Colors.black54,
-                  ),
-                
-                ),
+                style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Color(0xff1F135B),
+                )),
+              ),
             )
           ],
         )
@@ -112,8 +116,6 @@ Widget buildSearch() {
     });
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,13 +125,48 @@ Widget buildSearch() {
         currentIndex: currentNavIndex,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.work_outline), label: 'Jobs'),
+            icon: Icon(
+              Icons.work_outline,
+              color: Color(0xff1F135B),
+            ),
+            label: 'Jobs',
+            // style: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   color: Color(0xff3D3D3D),
+            // )),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outlined), label: 'Applications'),
+            icon: Icon(Icons.person_outlined, color: Color(0xff1F135B)),
+            label: 'Applications',
+            // style: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   color: Color(0xff000000),
+            // )),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.file_copy_outlined), label: 'Resume'),
+            icon: Icon(Icons.file_copy_outlined, color: Color(0xff1F135B)),
+            label: 'Resume',
+            // style: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   color: Color(0xff000000),
+            // )),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin), label: 'Profile'),
+            icon: Icon(Icons.person_pin, color: Color(0xff1F135B)),
+            label: 'Profile',
+            // style: GoogleFonts.roboto(
+            //     textStyle: TextStyle(
+            //   fontWeight: FontWeight.w400,
+            //   fontSize: 12,
+            //   color: Color(0xff000000),
+            // )),
+          ),
         ],
       ),
       body: SingleChildScrollView(
