@@ -1,39 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:studentworker/views/screens/studentscreen/studentprofile.dart/resumepage1.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'onboarding_provider.dart';
 
-
-//import 'homescreen.dart';
-
-class WelcomeScreen extends StatefulWidget {
-
+class OnBoardingScreen extends StatefulWidget {
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _OnBoardingScreenState createState() => _OnBoardingScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
-  final _controller = PageController();
-  int _currentPage = 0;
-
-  final List<Map<String, String>> splashData = [
-    {
-      "title": "StudentWorker",
-      "image": "assets/vector.png",
-      "subtitle" :
-      "Find part-time jobs and earn while you school",
-
-    },
-    {
-      "title": "StudentWorker",
-      "image": "assets/vector1.png",
-      "subtitle":
-      "Hire students on part-time and save capital",
-
-    },
-
-  ];
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   AnimatedContainer _buildDots({required int index}) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
@@ -46,7 +22,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       margin: const EdgeInsets.only(right: 5),
       height: 10,
       curve: Curves.easeIn,
-      width: _currentPage == index ? 20 : 10,
+      width: context.read(onBoardingProvider).currentPage == index ? 20 : 10,
     );
   }
 
@@ -60,51 +36,58 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Expanded(
               flex: 3,
               child: PageView.builder(
-                controller: _controller,
-                itemCount: splashData.length,
+                controller: context.read(onBoardingProvider).controller,
+                itemCount: context.read(onBoardingProvider).splashData.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: <Widget>[
-
                       Spacer(flex: 2),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15.0),
                         child: Text(
-                          splashData[index]['title']!.toUpperCase(),
+                          context
+                              .read(onBoardingProvider)
+                              .splashData[index]['title']!
+                              .toUpperCase(),
                           textAlign: TextAlign.center,
                           style: GoogleFonts.roboto(
-                                              textStyle: TextStyle(fontWeight: FontWeight.w500,
-                                                fontSize: 20,
-                                                color: const Color(0xff1F135B),
-                                              ) ),
+                              textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                            color: const Color(0xff1F135B),
+                          )),
                         ),
                       ),
-
                       Spacer(
                         flex: 2,
                       ),
                       AspectRatio(
                         aspectRatio: 16 / 9,
                         child: Image.asset(
-                          splashData[index]['image']!,
+                          context.read(onBoardingProvider).splashData[index]
+                              ['image']!,
                           fit: BoxFit.contain,
                         ),
                       ),
-                      Spacer(flex: 1,),
-
+                      Spacer(
+                        flex: 1,
+                      ),
                       Text(
-                        splashData[index]['subtitle']!,
+                        context.read(onBoardingProvider).splashData[index]
+                            ['subtitle']!,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.roboto(
-                                  textStyle: TextStyle(fontWeight: FontWeight.w400,
-                                    fontSize: 16,
-                                    color: const Color(0xff000000),
-                                  ) ),
+                            textStyle: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: const Color(0xff000000),
+                        )),
                       ),
                     ],
                   );
                 },
-                onPageChanged: (value) => setState(() => _currentPage = value),
+                onPageChanged: (value) => setState(
+                    () => context.read(onBoardingProvider).currentPage = value),
               ),
             ),
             Expanded(
@@ -117,8 +100,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
-                        splashData.length,
-                            (int index) => _buildDots(index: index),
+                        context.read(onBoardingProvider).splashData.length,
+                        (int index) => _buildDots(index: index),
                       ),
                     ),
                   ),
@@ -130,23 +113,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       width: MediaQuery.of(context).size.width,
                       // ignore: deprecated_member_use
                       child: FlatButton(
-                        onPressed: () {
-                          _controller.nextPage(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeIn,
-                          );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => ResumePage()));
-                                      },
-
-                        child: Text(
-                          _currentPage + 1 == splashData.length
-                              ? 'Get Started'
-                              : 'Get Started',
-                          style:GoogleFonts.roboto(
-                                              textStyle: TextStyle(fontWeight: FontWeight.w400,
-                                                fontSize: 16,
-                                                color: Color(0xffFFFFFF),
-                                              ) ),
+                        onPressed:
+                            context.read(onBoardingProvider).getStartedPressed,
+                        child: Consumer(
+                          builder: (_, watch, __) {
+                            var op = watch(onBoardingProvider);
+                            return Text(
+                              op.currentPage == 0 ? 'Next' : 'Get Started',
+                              style: GoogleFonts.roboto(
+                                  textStyle: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                color: Color(0xffFFFFFF),
+                              )),
+                            );
+                          },
                         ),
                         color: const Color(0xFF0A674F),
                       ),
@@ -162,7 +143,3 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 }
-
-
-
-

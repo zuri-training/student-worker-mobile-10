@@ -1,22 +1,27 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:studentworker/views/screens/getstarted.dart';
-import 'package:studentworker/views/screens/job/jobMain.dart';
-// import 'package:studentworker/views/screens/homescreen.dart';
-//import 'package:studentworker/views/screens/loadingscreen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() => runApp(App());
+import 'global/pages.dart';
 
-class App extends StatelessWidget {
+void main() {
+  runApp(ProviderScope(child: StudentWorker()));
+}
+
+class StudentWorker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Student worker',
-        initialRoute: '/',
-        routes: {
-          // '/' : (context) => Loading(),
-           //'/': (context) => WelcomeScreen(),
-          '/': (context) => JobMain(),
-        });
+      navigatorKey: navigatorKey,
+      builder: BotToastInit(),
+      navigatorObservers: [BotToastNavigatorObserver()],
+      title: 'Student Worker',
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: (settings) =>
+          CupertinoPageRoute(builder: pages?[settings.name]),
+    );
   }
+
+  
 }
