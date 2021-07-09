@@ -26,9 +26,6 @@ class _FilterDialogState extends State<FilterDialog> {
   @override
   Widget build(BuildContext context) {
     return
-        //hasApplied
-        //? ApplicationSuccess(widget.findMoreJobs)
-        //:
         AlertDialog(
       title: Text('Narrow Your Search'),
       content: Column(
