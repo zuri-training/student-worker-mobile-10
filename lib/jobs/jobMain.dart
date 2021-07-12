@@ -118,8 +118,7 @@ class _JobMainstate extends State<JobMain> {
           child: Row(
             children: <Widget>[
               jobCategory('Retail', icon: Icon(Icons.person_outline)),
-              jobCategory('Marketing',
-                  icon: Icon(Icons.campaign_outlined)),
+              jobCategory('Marketing', icon: Icon(Icons.campaign_outlined)),
               jobCategory('Catering', icon: Icon(Icons.baby_changing_station)),
               jobCategory('Careers', icon: Icon(Icons.work_outline)),
             ],

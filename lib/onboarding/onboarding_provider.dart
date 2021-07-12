@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/global/pages.dart';
+import 'package:studentworker/global/pages.dart';
+
 
 final onBoardingProvider =
     ChangeNotifierProvider.autoDispose((ref) => OnBoardingProvider());

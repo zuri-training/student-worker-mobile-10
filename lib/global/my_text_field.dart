@@ -1,4 +1,4 @@
-// this widget holds all field properties for this form//
+// this widget holds all field properties for this form
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {

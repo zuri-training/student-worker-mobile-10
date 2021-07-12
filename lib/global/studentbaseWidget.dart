@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/jobs/jobProvider.dart';
+import 'package:studentworker/jobs/jobProvider.dart';
+
 
 class StudentBaseWidget extends StatelessWidget {
   @override

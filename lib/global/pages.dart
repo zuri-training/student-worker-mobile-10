@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:student_worker/auth/login.dart';
-import 'package:student_worker/auth/signup.dart';
-import 'package:student_worker/employer/create_employer_acct1.dart';
-import 'package:student_worker/employer/create_employer_acct2.dart';
-import 'package:student_worker/employer/employer_base_widget.dart';
-import 'package:student_worker/employer/main_dashboard.dart';
-import 'package:student_worker/employer/review_and_post_job.dart';
-import 'package:student_worker/global/studentbaseWidget.dart';
-import 'package:student_worker/jobs/jobConfirm.dart';
-import 'package:student_worker/jobs/jobDescriptionMain.dart';
-import 'package:student_worker/onboarding/onboarding_page.dart';
-import 'package:student_worker/resume/resume_page1.dart';
-import 'package:student_worker/splash/splash_screen.dart';
+import 'package:studentworker/auth/login.dart';
+import 'package:studentworker/auth/signup.dart';
+import 'package:studentworker/global/studentbaseWidget.dart';
+import 'package:studentworker/jobs/jobConfirm.dart';
+import 'package:studentworker/jobs/jobDescriptionMain.dart';
+import 'package:studentworker/onboarding/onboarding_page.dart';
+import 'package:studentworker/resume/resume_page1.dart';
+import 'package:studentworker/splash/splash_screen.dart';
+
 
 import '../auth/identity_page.dart';
 import '../resume/resume_page2.dart';

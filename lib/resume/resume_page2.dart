@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/global/my_text_field.dart';
+import 'package:studentworker/global/my_text_field.dart';
 
 import '../global/sp.dart';
 import 'resume_provider.dart';

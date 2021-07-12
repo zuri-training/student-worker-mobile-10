@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:student_worker/jobs/job.dart';
+import 'package:studentworker/jobs/job.dart';
 
 import 'appliedJobs.dart';
 

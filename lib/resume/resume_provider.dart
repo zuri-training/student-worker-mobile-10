@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/global/pages.dart';
-import 'package:student_worker/global/sp.dart';
+import 'package:studentworker/global/pages.dart';
+import 'package:studentworker/global/sp.dart';
 
 final resumeProvider = ChangeNotifierProvider((ref) => ResumeProvider());
 
@@ -56,8 +56,7 @@ class ResumeProvider extends ChangeNotifier {
 
   void moveToBaseWidget() {
     SP.setBool(hasCompletedResumeKey, true);
-    SP.setBool(loggedInTag,
-        true); // TODO: remove this line and put it in the login logic
+    SP.setBool(loggedInTag, true);
     navigator!.pushNamedAndRemoveUntil(studentBaseWidget, (route) => false);
   }
 

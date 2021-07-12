@@ -1,9 +1,7 @@
-//linked to applications.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/applications/applicationProvider.dart';
-
-import 'package:student_worker/jobs/job.dart';
+import 'package:studentworker/applications/applicationProvider.dart';
+import 'package:studentworker/jobs/job.dart';
 
 class AppliedJobWidget extends StatelessWidget {
   final JobModel job;

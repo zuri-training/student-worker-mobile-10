@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/employer/review_and_post_job.dart';
-import 'package:student_worker/global/pages.dart';
-import 'package:student_worker/global/sp.dart';
+import 'package:studentworker/global/pages.dart';
+import 'package:studentworker/global/sp.dart';
 
 final splashProvider = Provider((ref) => SplashProvider());
 
@@ -10,7 +9,7 @@ class SplashProvider {
     await SP.init();
     await Future.delayed(Duration(seconds: 3));
     bool isFirstTime = SP.getBool(firstTimeUserKey) ?? true;
-    // SP.clear(); //TODO: Remove this line of code
+    // SP.clear();
     bool isLoggedIn = SP.getBool(loggedInTag) ?? false;
     goToNextPage(isFirstTime, isLoggedIn);
   }

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/global/my_text_field.dart';
-import 'package:student_worker/resume/resume_provider.dart';
+import 'package:studentworker/global/my_text_field.dart';
+import 'package:studentworker/resume/resume_provider.dart';
 
 import '../global/sp.dart';
 
@@ -68,8 +68,9 @@ class _ResumePage1State extends State<ResumePage1> {
                 height: 3.0,
               ),
               MyTextField(
-                onChanged: (value) =>
-                    context.read(resumeProvider).onChanged(studentFirstnameKey, value),
+                onChanged: (value) => context
+                    .read(resumeProvider)
+                    .onChanged(studentFirstnameKey, value),
                 controller: context.read(resumeProvider).firstnameController,
                 keyboardType: TextInputType.name,
                 hintText: 'Ayo',
@@ -233,4 +234,3 @@ class _ResumePage1State extends State<ResumePage1> {
         ));
   }
 }
-

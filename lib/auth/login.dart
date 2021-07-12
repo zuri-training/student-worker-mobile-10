@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:student_worker/auth/auth_provider.dart';
-import 'package:student_worker/global/my_text_field.dart';
-import 'package:student_worker/global/sp.dart';
+import 'package:studentworker/auth/auth_provider.dart';
+import 'package:studentworker/global/my_text_field.dart';
+import 'package:studentworker/global/sp.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -128,7 +127,8 @@ class _LoginScreenstate extends State<LoginScreen> {
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF0A674F)),
         ),
-        onPressed: () => context.read(authProvider).onAuthPressed(AuthAction.login),
+        onPressed: () =>
+            context.read(authProvider).onAuthPressed(AuthAction.login),
         child: Text(
           'Login',
           style: GoogleFonts.roboto(

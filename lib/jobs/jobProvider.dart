@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:student_worker/applications/applications.dart';
-import 'package:student_worker/global/pages.dart';
-import 'package:student_worker/global/successDialog.dart';
-import 'package:student_worker/jobs/job.dart';
-import 'package:student_worker/jobs/jobMain.dart';
-import 'package:student_worker/profile/student_profile.dart';
-import 'package:student_worker/resume/resume_edit.dart';
+import 'package:studentworker/applications/applications.dart';
+import 'package:studentworker/global/pages.dart';
+import 'package:studentworker/global/successDialog.dart';
+import 'package:studentworker/jobs/job.dart';
+import 'package:studentworker/jobs/jobMain.dart';
+import 'package:studentworker/profile/student_profile.dart';
+import 'package:studentworker/resume/resume_edit.dart';
 
 final jobProvider = ChangeNotifierProvider((ref) => JobProvider());
 

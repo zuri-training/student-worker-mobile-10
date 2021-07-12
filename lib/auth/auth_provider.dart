@@ -3,10 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:student_worker/global/pages.dart';
-import 'package:student_worker/global/sp.dart';
-import 'package:student_worker/global/toast.dart';
+import 'package:studentworker/global/pages.dart';
+import 'package:studentworker/global/sp.dart';
+import 'package:studentworker/global/toast.dart';
 
 final authProvider = ChangeNotifierProvider((ref) => AuthProvider());
 
@@ -193,42 +192,3 @@ class AuthProvider extends ChangeNotifier {
 
 enum StudentWorker { student, employer, none }
 enum AuthAction { signup, login }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
