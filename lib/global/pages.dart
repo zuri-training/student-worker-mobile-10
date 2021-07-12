@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:studentworker/auth/login.dart';
 import 'package:studentworker/auth/signup.dart';
+import 'package:studentworker/employer/create_employer_acct1.dart';
+import 'package:studentworker/employer/create_employer_acct2.dart';
+import 'package:studentworker/employer/employer_base_widget.dart';
+import 'package:studentworker/employer/main_dashboard.dart';
+import 'package:studentworker/employer/review_and_post_job.dart';
 import 'package:studentworker/global/studentbaseWidget.dart';
 import 'package:studentworker/jobs/jobConfirm.dart';
 import 'package:studentworker/jobs/jobDescriptionMain.dart';
