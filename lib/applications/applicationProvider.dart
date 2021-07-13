@@ -10,6 +10,6 @@ final applicationProvider =
 class ApplicationProvider extends ChangeNotifier {
   void onAppliedJobTap() {
     navigator!.context.read(jobProvider).isFromJobs = false;
-    navigator!.pushNamed(jobDescription);
+    navigator!.pushNamed(appliedJobDescription);
   }
 }
