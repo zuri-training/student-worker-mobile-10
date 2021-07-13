@@ -35,6 +35,7 @@ class _SignupScreenstate extends State<SignupScreen> {
         ),
         SizedBox(height: 3),
         MyTextField(
+          action: TextInputAction.next,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: context.read(authProvider).emailValidator,
           hintText: 'danielsilver12@gmail.com',
@@ -66,6 +67,7 @@ class _SignupScreenstate extends State<SignupScreen> {
           builder: (_, watch, __) {
             var ap = watch(authProvider);
             return MyTextField(
+              action: TextInputAction.done,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: context.read(authProvider).passwordValidator,
               maxLines: 1,

@@ -22,6 +22,16 @@ class AuthProvider extends ChangeNotifier {
   bool passwordIsHidden = true;
   bool readOnly = false;
 
+  var firstnameNode;
+
+  var lastnameNode;
+
+  var mobileNumberNode;
+
+  var stateNode;
+
+  var cityNode;
+
   String signupAppBarTitle() => selected == StudentWorker.student
       ? 'Student Sign Up'
       : 'Employer Sign Up';
@@ -188,6 +198,8 @@ class AuthProvider extends ChangeNotifier {
     passwordController.dispose();
     super.dispose();
   }
+
+  nextNode(lastnameNode) {}
 }
 
 enum StudentWorker { student, employer, none }

@@ -35,6 +35,9 @@ class _LoginScreenstate extends State<LoginScreen> {
         ),
         SizedBox(height: 3),
         MyTextField(
+          action: TextInputAction.next,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: context.read(authProvider).emailValidator,
           hintText: 'danielsilver12@gmail.com',
           keyboardType: TextInputType.emailAddress,
           controller: context.read(authProvider).emailController,
@@ -64,6 +67,9 @@ class _LoginScreenstate extends State<LoginScreen> {
           builder: (_, watch, __) {
             var ap = watch(authProvider);
             return MyTextField(
+              action: TextInputAction.next,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: context.read(authProvider).emailValidator,
               maxLines: 1,
               hintText: 'Machine',
               obscureText: ap.passwordIsHidden,

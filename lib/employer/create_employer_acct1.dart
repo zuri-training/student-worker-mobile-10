@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:studentworker/global/my_text_field.dart';
 
-
 import '../global/sp.dart';
 import 'employer_provider.dart';
 
@@ -69,6 +68,7 @@ class _CreateEmployerAcct1State extends State<CreateEmployerAcct1> {
                 height: 3.0,
               ),
               MyTextField(
+                action: TextInputAction.next,
                 onChanged: (value) => context
                     .read(employerProvider)
                     .onChanged(employerFirstnameKey, value),
@@ -92,6 +92,7 @@ class _CreateEmployerAcct1State extends State<CreateEmployerAcct1> {
                 height: 3.0,
               ),
               MyTextField(
+                action: TextInputAction.next,
                   onChanged: (value) => context
                       .read(employerProvider)
                       .onChanged(employerLastnameKey, value),
@@ -117,6 +118,7 @@ class _CreateEmployerAcct1State extends State<CreateEmployerAcct1> {
                 children: [
                   Expanded(
                     child: MyTextField(
+                      action: TextInputAction.next,
                       onChanged: (value) => context
                           .read(employerProvider)
                           .onChanged(employerCountryCodeKey, value),
@@ -134,6 +136,7 @@ class _CreateEmployerAcct1State extends State<CreateEmployerAcct1> {
                   Expanded(
                     flex: 3,
                     child: MyTextField(
+                      action: TextInputAction.done,
                         onChanged: (value) => context
                             .read(employerProvider)
                             .onChanged(employerMobileNumberKey, value),
