@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:studentworker/global/sp.dart';
 
 class StudentProfile extends StatefulWidget {
   const StudentProfile({Key? key}) : super(key: key);
@@ -14,8 +15,13 @@ class _StudentProfileState extends State<StudentProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffE5E5E5),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        title: Text('Profile'),
+      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 70),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -25,7 +31,7 @@ class _StudentProfileState extends State<StudentProfile> {
                   CircleAvatar(
                     backgroundColor: Color(0xff341F97),
                     child: Text(
-                      'A',
+                      '${SP.getString(studentFirstnameKey)!.substring(0, 1)}',
                       style: GoogleFonts.roboto(
                           textStyle: TextStyle(
                         fontWeight: FontWeight.w400,
@@ -39,7 +45,7 @@ class _StudentProfileState extends State<StudentProfile> {
                     height: 12,
                   ),
                   Text(
-                    'Ayo David',
+                    '${SP.getString(studentFirstnameKey)} ${SP.getString(studentLastnameKey)}',
                     style: GoogleFonts.roboto(
                         textStyle: TextStyle(
                       fontWeight: FontWeight.w500,
@@ -51,7 +57,7 @@ class _StudentProfileState extends State<StudentProfile> {
                     height: 4,
                   ),
                   Text(
-                    "ayodavid123@gmail.com",
+                    "${SP.getString(emailKey)}",
                     style: GoogleFonts.roboto(
                         textStyle: TextStyle(
                       fontWeight: FontWeight.w400,
@@ -68,7 +74,6 @@ class _StudentProfileState extends State<StudentProfile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   GestureDetector(
-                    
                     child: Text(
                       'Change Email',
                       textAlign: TextAlign.start,

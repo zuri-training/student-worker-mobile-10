@@ -74,6 +74,11 @@ class _ResumePage1State extends State<ResumePage1> {
                 controller: context.read(resumeProvider).firstnameController,
                 keyboardType: TextInputType.name,
                 hintText: 'Ayo',
+                action: TextInputAction.next,
+                focusNode: context.read(resumeProvider).firstnameNode,
+                onEditingComplete: () => context
+                    .read(resumeProvider)
+                    .nextNode(context.read(resumeProvider).lastnameNode),
               ),
               SizedBox(
                 height: 16.0,
@@ -91,12 +96,18 @@ class _ResumePage1State extends State<ResumePage1> {
                 height: 3.0,
               ),
               MyTextField(
-                  onChanged: (value) => context
-                      .read(resumeProvider)
-                      .onChanged(studentLastnameKey, value),
-                  controller: context.read(resumeProvider).lastnameController,
-                  hintText: 'David',
-                  keyboardType: TextInputType.name),
+                onChanged: (value) => context
+                    .read(resumeProvider)
+                    .onChanged(studentLastnameKey, value),
+                controller: context.read(resumeProvider).lastnameController,
+                hintText: 'David',
+                keyboardType: TextInputType.name,
+                action: TextInputAction.next,
+                focusNode: context.read(resumeProvider).mobileNumberNode,
+                onEditingComplete: () => context
+                    .read(resumeProvider)
+                    .nextNode(context.read(resumeProvider).lastnameNode),
+              ),
               SizedBox(
                 height: 16.0,
               ),
@@ -124,6 +135,7 @@ class _ResumePage1State extends State<ResumePage1> {
                       readOnly: true,
                       hintText: '+234',
                       keyboardType: TextInputType.number,
+                      action: TextInputAction.next,
                       //  controller: ctyCodeCtrn,
                     ),
                   ),
@@ -133,13 +145,19 @@ class _ResumePage1State extends State<ResumePage1> {
                   Expanded(
                     flex: 3,
                     child: MyTextField(
-                        onChanged: (value) => context
-                            .read(resumeProvider)
-                            .onChanged(studentMobileNumberKey, value),
-                        controller:
-                            context.read(resumeProvider).mobileNumberController,
-                        hintText: '8074000011',
-                        keyboardType: TextInputType.number),
+                      onChanged: (value) => context
+                          .read(resumeProvider)
+                          .onChanged(studentMobileNumberKey, value),
+                      controller:
+                          context.read(resumeProvider).mobileNumberController,
+                      hintText: '8074000011',
+                      keyboardType: TextInputType.number,
+                      action: TextInputAction.next,
+                      focusNode: context.read(resumeProvider).mobileNumberNode,
+                      onEditingComplete: () => context
+                          .read(resumeProvider)
+                          .nextNode(context.read(resumeProvider).stateNode),
+                    ),
                   ),
                 ],
               ),
@@ -171,6 +189,11 @@ class _ResumePage1State extends State<ResumePage1> {
                               .currentStateController,
                           hintText: 'Lagos',
                           keyboardType: TextInputType.text,
+                          action: TextInputAction.next,
+                          focusNode: context.read(resumeProvider).stateNode,
+                          onEditingComplete: () => context
+                              .read(resumeProvider)
+                              .nextNode(context.read(resumeProvider).cityNode),
                           //controller: stateCtrn,
                         ),
                       ],
@@ -201,6 +224,11 @@ class _ResumePage1State extends State<ResumePage1> {
                               context.read(resumeProvider).cityController,
                           hintText: 'Apapa',
                           keyboardType: TextInputType.text,
+                          action: TextInputAction.next,
+                          focusNode: context.read(resumeProvider).cityNode,
+                          onEditingComplete: () => context
+                              .read(resumeProvider)
+                              .nextNode(FocusNode()),
                           //controller: cityCtrn,
                         ),
                       ],

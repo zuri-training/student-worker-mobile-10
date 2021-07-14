@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:studentworker/global/my_text_field.dart';
 
-
 import '../global/sp.dart';
 import 'resume_provider.dart';
 
@@ -73,12 +72,18 @@ class _ResumePage2State extends State<ResumePage3> {
                 height: 3.0,
               ),
               MyTextField(
-                  onChanged: (value) => context
-                      .read(resumeProvider)
-                      .onChanged(studentSkill1Key, value),
-                  controller: context.read(resumeProvider).skill1Controller,
-                  hintText: "skill1",
-                  keyboardType: TextInputType.name),
+                onChanged: (value) => context
+                    .read(resumeProvider)
+                    .onChanged(studentSkill1Key, value),
+                controller: context.read(resumeProvider).skill1Controller,
+                hintText: "skill1",
+                keyboardType: TextInputType.name,
+                focusNode: context.read(resumeProvider).skill1Node,
+                onEditingComplete: () => context
+                    .read(resumeProvider)
+                    .nextNode(context.read(resumeProvider).skill2Node),
+                action: TextInputAction.next,
+              ),
               SizedBox(
                 height: 16.0,
               ),
@@ -95,12 +100,18 @@ class _ResumePage2State extends State<ResumePage3> {
                 height: 3.0,
               ),
               MyTextField(
-                  onChanged: (value) => context
-                      .read(resumeProvider)
-                      .onChanged(studentSkill2Key, value),
-                  controller: context.read(resumeProvider).skill2Controller,
-                  hintText: 'Communication skills',
-                  keyboardType: TextInputType.name),
+                onChanged: (value) => context
+                    .read(resumeProvider)
+                    .onChanged(studentSkill2Key, value),
+                controller: context.read(resumeProvider).skill2Controller,
+                hintText: 'Communication skills',
+                keyboardType: TextInputType.name,
+                focusNode: context.read(resumeProvider).skill2Node,
+                onEditingComplete: () => context
+                    .read(resumeProvider)
+                    .nextNode(context.read(resumeProvider).skill3Node),
+                action: TextInputAction.next,
+              ),
               SizedBox(
                 height: 16.0,
               ),
@@ -117,12 +128,17 @@ class _ResumePage2State extends State<ResumePage3> {
                 height: 3.0,
               ),
               MyTextField(
-                  onChanged: (value) => context
-                      .read(resumeProvider)
-                      .onChanged(studentkill3Key, value),
-                  controller: context.read(resumeProvider).skill3Controller,
-                  hintText: 'Teamwork',
-                  keyboardType: TextInputType.name),
+                onChanged: (value) => context
+                    .read(resumeProvider)
+                    .onChanged(studentSkill3Key, value),
+                controller: context.read(resumeProvider).skill3Controller,
+                hintText: 'Teamwork',
+                keyboardType: TextInputType.name,
+                focusNode: context.read(resumeProvider).skill3Node,
+                onEditingComplete: () =>
+                    context.read(resumeProvider).nextNode(FocusNode()),
+                action: TextInputAction.next,
+              ),
               SizedBox(
                 height: 74,
               ),
@@ -143,8 +159,8 @@ class _ResumePage2State extends State<ResumePage3> {
                         ),
                       ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Color(0xffE5E5E5)),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xffE5E5E5)),
                       ),
                     ),
                   ),
@@ -154,10 +170,9 @@ class _ResumePage2State extends State<ResumePage3> {
                   Expanded(
                     flex: 3,
                     child: ElevatedButton(
-                      onPressed:
-                          context.read(resumeProvider).moveToBaseWidget,
+                      onPressed: context.read(resumeProvider).moveToBaseWidget,
                       child: Text(
-                        "Next",
+                        "Submit",
                         style: GoogleFonts.roboto(
                             textStyle: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -167,8 +182,8 @@ class _ResumePage2State extends State<ResumePage3> {
                         )),
                       ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Color(0xFF0A674F)),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xFF0A674F)),
                       ),
                     ),
                   ),

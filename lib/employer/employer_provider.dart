@@ -73,7 +73,7 @@ class EmployerProvider extends ChangeNotifier {
     SP.setBool(employerHasCreatedAcctKey, true);
     SP.setBool(hasCompletedResumeKey, true);
     SP.setBool(loggedInTag, true);
-    // TODO: remove the above line and put it in the login logic
+
     navigator!.pushNamedAndRemoveUntil(employerBaseWidget, (route) => false);
   }
 

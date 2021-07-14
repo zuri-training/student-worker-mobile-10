@@ -25,8 +25,8 @@ class _JobDescriptionMainstate extends State<JobDescriptionMain> {
 
   Widget buildText1() {
     return Text(
-      'Company is the fastest growing authentic directory that takes pride in connecting buyers and sellers across Nigeria and beyond. Our online outlet provides you with an uninterrupted shopping experience. ',
-      style: TextStyle(
+    context.read(jobProvider).job.aboutCompany,
+     style: TextStyle(
         fontSize: 16,
         color: Colors.black87,
       ),
@@ -46,10 +46,7 @@ class _JobDescriptionMainstate extends State<JobDescriptionMain> {
 
   Widget buildText3() {
     return Text(
-      '1. Prepare and develop tools'
-      '\n \n2. Lead the entire student team'
-      '\n \n3. Utilize backend stuff'
-      '\n \n4. Design and code learning',
+      context.read(jobProvider).job.studentResposibility,
       style: TextStyle(
         fontSize: 16,
         color: Colors.black87,
@@ -125,12 +122,14 @@ class _JobDescriptionMainstate extends State<JobDescriptionMain> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          centerTitle: true,
+        title: Text('Apply'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
           color: Colors.black,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -138,31 +137,38 @@ class _JobDescriptionMainstate extends State<JobDescriptionMain> {
         padding: EdgeInsets.symmetric(
           horizontal: 16,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            JobWidget(JobModel()),
-            SizedBox(height: 10),
-            buildAbout(),
-            SizedBox(height: 5),
-            buildText1(),
-            SizedBox(height: 10),
-            buildText2(),
-            SizedBox(height: 5),
-            buildText3(),
-            SizedBox(height: 10),
-            buildText4(),
-            SizedBox(height: 5),
-            buildText5(),
-            SizedBox(height: 10),
-            context.read(jobProvider).isFromJobs
-                ? buildApplyBtn()
-                : buildAppliedCard(),
-            SizedBox(height: 15),
-          ],
+        child: Consumer(
+          builder: (_, watch, __) {
+            // ignore: unused_local_variable
+            var jp = watch(jobProvider);
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                JobWidget(JobModel()),
+                SizedBox(height: 10),
+                buildAbout(),
+                SizedBox(height: 5),
+                buildText1(),
+                SizedBox(height: 10),
+                buildText2(),
+                SizedBox(height: 5),
+                buildText3(),
+                SizedBox(height: 10),
+                buildText4(),
+                SizedBox(height: 5),
+                buildText5(),
+                SizedBox(height: 10),
+                buildApplyBtn(),
+                SizedBox(height: 15),
+              ],
+            );
+          },
         ),
       ),
     );
+        
+    
+    
   }
 }

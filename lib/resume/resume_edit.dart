@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:studentworker/global/sp.dart';
 
 class ResumeEdit extends StatefulWidget {
   const ResumeEdit({Key? key}) : super(key: key);
@@ -24,9 +25,15 @@ class _ResumeEditState extends State<ResumeEdit> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          title: Text('Resume'),
+
+        ),
         body: Padding(
           padding:
-              const EdgeInsets.only(top: 40, left: 10, right: 10, bottom: 0),
+              const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 0),
           child: Column(
             children: [
               Center(
@@ -39,7 +46,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                     ))),
               ),
               SizedBox(
-                height: 20,
+                height: 4,
               ),
               Row(
                 children: <Widget>[
@@ -56,7 +63,9 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text('Ayo David',
+                      Text(
+                        '${SP.getString(studentFirstnameKey)}'
+                        '${SP.getString(studentLastnameKey)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -66,7 +75,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 3,
                       ),
-                      Text('ayodavid123@gmail.com',
+                      Text('${SP.getString(emailKey)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -76,7 +85,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 3,
                       ),
-                      Text('0903457862',
+                      Text('${SP.getString(studentMobileNumberKey)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -86,7 +95,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 3,
                       ),
-                      Text('Apapa, Lagos',
+                      Text('${SP.getString(studentCityKey)}, ${SP.getString(studentCurrentStateKey)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -282,7 +291,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text('University Of Lagos',
+                      Text('${SP.getString(studentSchoolKey)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -292,7 +301,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 3,
                       ),
-                      Text('Mechanical Engineering',
+                      Text('${SP.getString(studentCourseKey)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -302,7 +311,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 3,
                       ),
-                      Text('2019-2022',
+                      Text('${SP.getString(studentStartYearKey)}-${SP.getString(studentEndYearKey)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -457,7 +466,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text('1. Graphic Design',
+                      Text('1. ${SP.getString(studentSkill1Key)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -467,7 +476,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 3,
                       ),
-                      Text('2. Communication Skills ',
+                      Text('2. ${SP.getString(studentSkill2Key)}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -477,7 +486,7 @@ class _ResumeEditState extends State<ResumeEdit> {
                       SizedBox(
                         height: 3,
                       ),
-                      Text('3. Teamwork',
+                      Text('3. ${SP.getString(studentSkill3Key) ?? 'Great Team Worker'}',
                           style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                             fontWeight: FontWeight.w400,
